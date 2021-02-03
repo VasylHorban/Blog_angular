@@ -13,7 +13,7 @@
       <label for="surname-2" class="form-label">Surname</label>
       <input pattern="[a-zA-Z]+" name="surname" required #userSurname = "ngModel" [(ngModel)] = "newUser.surname" type="text" class="form-control" id="surname-2" >
     </div>
-    <div *ngIf = "userName.invalid && userSurname.dirty && !valid"  class=" alert text-danger bg-light">
+    <div *ngIf = "userSurname.invalid && userSurname.dirty && !valid"  class=" alert text-danger bg-light">
       Only Latin letters are allowed!
       </div>
     <div *ngIf = "userSurname.invalid && !userSurname.dirty && !valid"  class=" alert text-danger bg-light">
@@ -35,10 +35,10 @@
     
     <div class="mb-3">
       <label for="password-2" class="form-label">Password</label>
-      <input pattern="[a-z]+[A-Z]+\d+" name="password" required #userPassword = "ngModel" [(ngModel)] = "newUser.password" type="password" class="form-control" id="password-2">
+      <input pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{3,}" name="password" required #userPassword = "ngModel" [(ngModel)] = "newUser.password" type="password" class="form-control" id="password-2">
     </div>
     <div *ngIf = "userPassword.invalid && userPassword.dirty && !valid"  class=" alert text-danger bg-light">
-      The password must have at least one lowercase letter, one uppercase letter and one digit!      
+      The password must have at least one lowercase letter, one uppercase letter and one digit!     
     </div>
     <div *ngIf = "userPassword.invalid && !userPassword.dirty && !valid"  class=" alert text-danger bg-light">
       Password is required!
