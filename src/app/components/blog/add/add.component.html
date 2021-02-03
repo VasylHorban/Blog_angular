@@ -1,0 +1,19 @@
+<div>
+    <form #addForm = 'ngForm'>
+        <div class="mb-3">
+            <label for="title-1" class="form-label">Select the title of the new post</label>
+            <input (input) = "valid = false;"  #title = "ngModel" required [(ngModel)] = "newPost.name" name="title" type="email" class="form-control" id="title-1" placeholder="title...">
+          </div>
+        <div *ngIf = "title.invalid && title.touched && !valid" class=" alert text-danger bg-light">
+                Title is required!
+        </div>
+          <div class="mb-3">
+            <label for="text-1" class="form-label">Describe your post</label>
+            <textarea (input) = "valid = false;" #text = "ngModel" required  [(ngModel)] = "newPost.text" name="text" class="form-control" id="text-1" placeholder="description..."></textarea>
+          </div>
+       <div *ngIf = "text.invalid && text.touched && !valid" class=" alert text-danger bg-light">
+                Description is required!
+           </div>
+          <button [disabled] = "addForm.invalid" type="submit" class="btn btn-success btn-sm" (click) = "add()">Add</button>
+    </form>
+</div>

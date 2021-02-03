@@ -1,0 +1,6 @@
+.cont:focus {
+    outline: none;
+}
+.can-not-edit {
+    pointer-events: none;
+}

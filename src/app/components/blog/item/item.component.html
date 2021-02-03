@@ -1,0 +1,11 @@
+<div class="d-grid gap-2 col-5 mx-auto mt-5 p-3">
+      <h2 contenteditable="true" class="pb-3 cont" [class.can-not-edit] = "!isEdit" #titel id="blog-name" [textContent] = "blog.data.name"></h2>
+      <p contenteditable="true" [class.can-not-edit] = "!isEdit" class="cont" #text [textContent] = "blog.data.text"></p>
+      <p contenteditable="true" [class.can-not-edit] = "!isEdit" class="cont" #date [textContent] = "blog.data.date"></p>
+      <div class="btn-group d-flex" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary btn-sm" (click) = "edit()" >Edit</button>
+        <button type="button" [disabled] = "!isEdit" class="btn btn-success btn-sm" (click) = "save({name : titel.textContent,text : text.textContent, date: date.textContent})" >Save</button>
+        <button *ngIf = "allRights" type="button" class="btn btn-danger btn-sm" (click) = "remove()" >Delete</button>
+
+    </div>
+</div>

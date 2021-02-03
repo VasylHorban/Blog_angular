@@ -1,0 +1,11 @@
+<button class="btn btn-danger position-fixed fx" (click) = "showWindow()">Delete all</button>
+
+<div *ngIf = "show" class="modal-container">
+    <div class="window">
+        <h3 class="mb-4">Are you sure you want to delete all posts?</h3>
+        <div class="d-grid gap-4 d-md-block">
+            <button class="btn btn-primary btn-sm marg" (click) = "delete()" type="button">Yes</button>
+            <button class="btn btn-secondary  btn-sm" type="button" (click) = "cansel()">No</button>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.048);
+}
+.fx{
+    bottom: 3rem;
+    right: 3rem;
+}
+.window{
+    position:fixed;
+    width: 400px;
+    background-color: #fff;
+    padding: 3rem;
+    top: 30%;
+    left: 50%;
+    margin-left: -200px;
+    box-shadow: 3px ​2px 9px -2px rgb(40 40 40 / 28%)
+}
+.marg{
+    margin-right: 20px;
+}

@@ -1,0 +1,27 @@
+<div class="d-grid gap-2 col-6 mx-auto mt-2">
+  <form *ngIf = "!openRegister" #loginForm = "ngForm" onsubmit="return false">
+    <h2 class="form-header">Please, log in</h2>
+    <div *ngIf = "dbFailed"  class=" alert text-danger bg-light">
+        Failed to find user, please check your data!
+      </div>
+    <div class="mb-3">
+      <label for="login-1" class="form-label">Login </label>
+      <input name="login" #login = "ngModel" [(ngModel)] = "userData.login" required type="text"  class="form-control" id="login-1" >
+    </div>
+    <div *ngIf = "login.invalid && login.dirty"  class=" alert text-danger bg-light">
+        Login is required!
+      </div>
+    <div class="mb-3">
+      <label for="password-1" class="form-label">Password</label>
+      <input name="password" #password = "ngModel" required [(ngModel)] = "userData.password" type="password" class="form-control" id="password-1">
+    </div>
+    <div *ngIf = "password.invalid && password.dirty" class="alert text-danger bg-light">
+        Password is required!
+      </div>
+
+    <button [disabled] = "loginForm.invalid" type="button" (click) = "checkUser()" class="btn btn-primary btn-sm btn-block">Log in</button>
+    <button type="button" class="btn btn-secondary btn-sm btn-block" (click) = "openRegister = true">Go to registration</button>
+
+  </form>
+  <app-register (registerEvent) = "openRegister = false;" *ngIf = "openRegister"></app-register>
+</div>

@@ -1,0 +1,7 @@
+<div class="position-relative">
+    <app-add class="fl"  (addEvent) = "getBlogs()"></app-add>
+    <app-item [allRights] = "allRights" *ngFor = "let blog of blogs; let index = index" [blog] = "blog" [index] = "index" (changeEvent) = "getBlogs()"></app-item>
+    <app-delete-all *ngIf = "!isEmpty && allRights" (deleteAllEvent) = "getBlogs()"></app-delete-all>
+    <span *ngIf = "isEmpty" class="text-center d-block text-muted mt-3">There are no posts yet...   \ *-* /</span>
+</div>
+

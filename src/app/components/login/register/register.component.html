@@ -1,0 +1,78 @@
+<form #registerForm = "ngForm">
+    <div  class="mb-3">
+        <label for="name-2" class="form-label">Name</label>
+        <input pattern="[a-zA-Z]+" type="text" name="name" required #userName = "ngModel" [(ngModel)] = "newUser.name" class="form-control" id="name-2" >
+      </div>
+      <div *ngIf = "userName.invalid && userName.dirty && !valid"  class=" alert text-danger bg-light">
+        Only Latin letters are allowed!
+        </div>
+      <div *ngIf = "userName.invalid && !userName.dirty && !valid"  class=" alert text-danger bg-light">
+        Name is required!
+      </div>
+    <div class="mb-3">
+      <label for="surname-2" class="form-label">Surname</label>
+      <input pattern="[a-zA-Z]+" name="surname" required #userSurname = "ngModel" [(ngModel)] = "newUser.surname" type="text" class="form-control" id="surname-2" >
+    </div>
+    <div *ngIf = "userName.invalid && userSurname.dirty && !valid"  class=" alert text-danger bg-light">
+      Only Latin letters are allowed!
+      </div>
+    <div *ngIf = "userSurname.invalid && !userSurname.dirty && !valid"  class=" alert text-danger bg-light">
+      Surname is required!
+    </div>
+    <div class="mb-3">
+      <label for="login-2" class="form-label">Login</label>
+      <input  pattern="[a-zA-Z]+" name="login" required #userLogin = "ngModel" [(ngModel)] = "newUser.login" type="text" class="form-control" id="login-2">
+    </div>
+    <div *ngIf = "userLogin.invalid && userLogin.dirty && !valid"  class=" alert text-danger bg-light">
+      Only Latin letters are allowed!
+      </div>
+    <div *ngIf = "userLogin.invalid && !userLogin.dirty && !valid"  class=" alert text-danger bg-light">
+      Login is required!
+    </div>
+    <div *ngIf = "alreadyExist"  class=" alert text-danger bg-light">
+      A user with this login already exists!    
+    </div>
+    
+    <div class="mb-3">
+      <label for="password-2" class="form-label">Password</label>
+      <input pattern="[a-z]+[A-Z]+\d+" name="password" required #userPassword = "ngModel" [(ngModel)] = "newUser.password" type="password" class="form-control" id="password-2">
+    </div>
+    <div *ngIf = "userPassword.invalid && userPassword.dirty && !valid"  class=" alert text-danger bg-light">
+      The password must have at least one lowercase letter, one uppercase letter and one digit!      
+    </div>
+    <div *ngIf = "userPassword.invalid && !userPassword.dirty && !valid"  class=" alert text-danger bg-light">
+      Password is required!
+    </div>
+
+    <div class="mb-3">
+      <label for="password-3" class="form-label">Repeat password</label>
+      <input [pattern]="userPassword.value" name="tempPassword" required #userTempPassword = "ngModel" [(ngModel)] = "tempPassword" type="password" class="form-control" id="password-3">
+    </div>
+    <div *ngIf = "userTempPassword.invalid && userTempPassword.dirty && !valid"  class=" alert text-danger bg-light">
+      Passwords must be same      
+    </div>
+    <div *ngIf = "userTempPassword.invalid && !userTempPassword.dirty && !valid"  class=" alert text-danger bg-light">
+      Repeat of password is required    
+    </div>
+    <div class="mb-3">
+      <label for="email-2" class="form-label">Email</label>
+      <input pattern="[a-z]\w+@[a-z]+\.[a-z]{2,4}" name="email" required #userEmail = "ngModel" [(ngModel)] = "newUser.email" type="text" class="form-control" id="email-2">
+    </div>
+    <div *ngIf = "userEmail.invalid && userEmail.dirty && !valid"  class=" alert text-danger bg-light">
+      Email should be lowercase, symbol @, and end with, for example, .com, .ua, .pl ...
+        </div>
+    <div *ngIf = "userEmail.invalid && !userEmail.dirty && !valid"  class=" alert text-danger bg-light">
+      Email is required!
+    </div>
+    <div class="d-flex">
+    <div class="mb-3  form-check-inline">
+      <input checked [(ngModel)] = "newUser.sex" name = "sex" type="radio" value="male" class="form-check-input" id="sex-2">
+      <label class="form-check-label" for="sex-2">Male</label>
+    </div>
+    <div class="mb-3 form-check-inline">
+      <input [(ngModel)] = "newUser.sex" value="female" name = "sex" type="radio" class="form-check-input" name="sex" id="sex-3">
+      <label class="form-check-label" for="sex-3">Female</label>
+    </div>
+  </div>
+    <button type="button" (click) = "check(registerForm)" class="btn btn-success btn-sm btn-block">Register</button>
+  </form>
