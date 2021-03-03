@@ -1,10 +1,6 @@
 import {
   Injectable
 } from '@angular/core';
-
-// import {
-//   users
-// } from '../mock/users-mock'
 import { User } from '../shared/user/user';
 import { userStatus } from '../shared/user/user-status.interface';
 import { user } from '../shared/user/user.interface';
@@ -13,6 +9,7 @@ import { LocalhostService } from './localhost.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private users : userStatus[];
   private activeUser : userStatus;
